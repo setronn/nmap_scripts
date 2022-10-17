@@ -10,7 +10,7 @@ for i in `seq $2`
 do
     startTime=`date +%s`
     echo "Scan #$i: $1 (ping scan). Start time: $(date +%T)"
-    nmap -sn $1 | grep "^Nmap scan report" | cut -d ' ' -f 5 | sed 's/$/ tcp:undone udp:undone/' >> scan_results/$dir/targets.tmp
+    nmap -sn -n $1 | grep "^Nmap scan report" | cut -d ' ' -f 5 | sed 's/$/ tcp:undone udp:undone/' >> scan_results/$dir/targets.tmp
     echo "Scan #$i is done after `date -d@$((\`date +%s\`-$startTime)) -u +%H:%M:%S` in $(date +%T)"
     if [ $i != $2 ]; then    #sleep between scans
         echo "Sleeping for 5s before the next lap"
