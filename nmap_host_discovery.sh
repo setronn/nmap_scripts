@@ -1,6 +1,7 @@
 #!/bin/bash
 #1 agr - nmap ping scan range. Example: 10.10.0.0/24
 #2 agr - Number of repeats 
+rm scan_results/$dir/targets.tmp
 dir=`echo $1 | tr '/' '-'` 
 mkdir scan_results
 mkdir scan_results/$dir #Makes a folder 'x.x.x.x-mask'
@@ -17,7 +18,6 @@ do
     fi
 done
 awk '!a[$0]++' scan_results/$dir/targets.tmp > scan_results/$dir/targets.list  #delete all duplicates
-rm scan_results/$dir/targets.tmp 
 echo ""
 echo "----------------------------------------------------------"
 echo ""
