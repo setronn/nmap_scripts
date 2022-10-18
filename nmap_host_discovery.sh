@@ -2,9 +2,9 @@
 #1 agr - nmap ping scan range. Example: 10.10.0.0/24
 #2 agr - Number of repeats 
 rm scan_results/$dir/targets.tmp
-dir=`echo $1 | tr '/' '-'` 
+dir=`echo $1 | tr '/' '-'` #x.x.x.x-mask
 mkdir scan_results
-mkdir scan_results/$dir #Makes a folder 'x.x.x.x-mask'
+mkdir scan_results/$dir 
 
 for i in `seq $2`
 do
